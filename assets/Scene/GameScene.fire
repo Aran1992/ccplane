@@ -192,7 +192,7 @@
       "array": [
         0,
         0,
-        532.6056233274298,
+        535.1962924902399,
         0,
         0,
         0,
@@ -262,7 +262,11 @@
     "plane": {
       "__id__": 6
     },
-    "_id": "05SPknmZ5OSJDudFZkpP4J"
+    "screenShakeMin": 1,
+    "screenShakeMax": 4,
+    "xOffset": 300,
+    "yOffset": 150,
+    "_id": "90+ypQEepCxJjpXCitIw2t"
   },
   {
     "__type__": "cc.Node",
@@ -433,7 +437,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "cloud-3",
+    "_name": "bg",
     "_objFlags": 0,
     "_parent": {
       "__id__": 2

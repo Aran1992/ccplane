@@ -1,13 +1,13 @@
 const {ccclass, property} = cc._decorator;
 
-@ccclass("飞机")
+@ccclass()
 export default class Plane extends cc.Component {
-    @property({type: cc.Float, displayName: "引擎推进力"})
-    private engineForce: number;
-    @property({type: cc.Float, displayName: "旋转速度"})
-    private angularVelocity: number;
-    @property({type: cc.Float, displayName: "空气阻力系数"})
-    private airFrictionCoefficient: number;
+    @property({type: cc.Float, displayName: '引擎推进力'})
+    private engineForce: number = 0;
+    @property({type: cc.Float, displayName: '旋转速度'})
+    private angularVelocity: number = 0;
+    @property({type: cc.Float, displayName: '空气阻力系数'})
+    private airFrictionCoefficient: number = 0;
     private engineStarting = false;
     private turnLeft = false;
     private turnRight = false;
@@ -23,7 +23,7 @@ export default class Plane extends cc.Component {
     }
 
     protected start() {
-        console.log("plane gravity", this.getComponent(cc.RigidBody).getMass() * cc.director.getPhysicsManager().gravity.y);
+        console.log('plane gravity', this.getComponent(cc.RigidBody).getMass() * cc.director.getPhysicsManager().gravity.y);
     }
 
     protected update() {

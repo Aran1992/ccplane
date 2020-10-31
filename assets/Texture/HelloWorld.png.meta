@@ -7,8 +7,8 @@
   "premultiplyAlpha": false,
   "genMipmaps": false,
   "packable": true,
-  "width": 195,
-  "height": 270,
+  "width": 270,
+  "height": 195,
   "platformSettings": {},
   "subMetas": {
     "HelloWorld": {
