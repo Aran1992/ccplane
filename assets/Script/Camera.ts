@@ -63,7 +63,7 @@ export default class Camera extends cc.Component {
         const addY = Math.sin(cameraMoveAngle) * velocity;
         const newX = Camera.approach(this.node.position.x, addX, targetX);
         const newY = Camera.approach(this.node.position.y, addY, targetY);
-        this.node.position = cc.v3(newX, newY);
+        // this.node.position = this.plane.position;
         // todo 速度太快跟不上
 
         // const x = this.node.position.x + this.screenShakeMin + (this.screenShakeMax - this.screenShakeMin) * Math.random();
