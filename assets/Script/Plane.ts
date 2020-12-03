@@ -1,7 +1,10 @@
+import MyComponent from "./MyComponent";
+import Utils from "./Utils";
+
 const {ccclass, property} = cc._decorator;
 
 @ccclass()
-export default class Plane extends cc.Component {
+export default class Plane extends MyComponent {
     @property({type: cc.Float, displayName: '引擎推进力'})
     private engineForce: number = 0;
     @property({type: cc.Float, displayName: '旋转速度'})
@@ -9,13 +12,17 @@ export default class Plane extends cc.Component {
     @property({type: cc.Float, displayName: '空气阻力系数'})
     private airFrictionCoefficient: number = 0;
     private rigidBody: cc.RigidBody = null;
+    private audioSource: cc.AudioSource = null;
     private engineStarting = false;
     private turnLeft = false;
     private turnRight = false;
     private fire = false;
+    private lastFireTime = 0;
+    private fireInterval = 1000 / 30 * 4;
 
     protected onLoad() {
         this.rigidBody = this.getComponent(cc.RigidBody);
+        this.audioSource = this.getComponent(cc.AudioSource);
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_DOWN, this.onKeyDown, this);
         cc.systemEvent.on(cc.SystemEvent.EventType.KEY_UP, this.onKeyUp, this);
     }
@@ -37,9 +44,9 @@ export default class Plane extends cc.Component {
         }
 
         if (this.engineStarting) {
-            const angle = this.node.angle / 180 * Math.PI;
-            const x = Math.cos(angle) * this.engineForce;
-            const y = Math.sin(angle) * this.engineForce;
+            const radian = Utils.angle2radian(this.node.angle);
+            const x = Math.cos(radian) * this.engineForce;
+            const y = Math.sin(radian) * this.engineForce;
             const engineForce = new cc.Vec2(x, y);
             this.rigidBody.applyForceToCenter(engineForce, true);
         }
@@ -49,7 +56,13 @@ export default class Plane extends cc.Component {
         this.rigidBody.applyForceToCenter(airFriction, true);
 
         if (this.fire) {
-            this.node.emit('planeFire', this.node.position);
+            const now = new Date().getTime();
+            const interval = now - this.lastFireTime;
+            if (interval > this.fireInterval) {
+                this.emit('planeFire', this.node.position, Utils.angle2radian(this.node.angle));
+                this.audioSource.play();
+                this.lastFireTime = now;
+            }
         }
     }
 

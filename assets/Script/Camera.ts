@@ -1,7 +1,9 @@
+import MyComponent from "./MyComponent";
+
 const {ccclass, property} = cc._decorator;
 
 @ccclass
-export default class Camera extends cc.Component {
+export default class Camera extends MyComponent {
     @property(cc.Node)
     private plane: cc.Node = null;
     @property({type: cc.Float, displayName: '屏幕震动最小值'})
@@ -63,7 +65,7 @@ export default class Camera extends cc.Component {
         const addY = Math.sin(cameraMoveAngle) * velocity;
         const newX = Camera.approach(this.node.position.x, addX, targetX);
         const newY = Camera.approach(this.node.position.y, addY, targetY);
-        // this.node.position = this.plane.position;
+        this.node.position = this.plane.position;
         // todo 速度太快跟不上
 
         // const x = this.node.position.x + this.screenShakeMin + (this.screenShakeMax - this.screenShakeMin) * Math.random();
