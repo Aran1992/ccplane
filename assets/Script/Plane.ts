@@ -18,7 +18,8 @@ export default class Plane extends MyComponent {
     private turnRight = false;
     private fire = false;
     private lastFireTime = 0;
-    private fireInterval = 1000 / 30 * 4;
+    private fireInterval = 175;
+    private shootAngleMaxOffset = 5;
 
     protected onLoad() {
         this.rigidBody = this.getComponent(cc.RigidBody);
@@ -59,7 +60,11 @@ export default class Plane extends MyComponent {
             const now = new Date().getTime();
             const interval = now - this.lastFireTime;
             if (interval > this.fireInterval) {
-                this.emit('planeFire', this.node.position, Utils.angle2radian(this.node.angle));
+                const min = -this.shootAngleMaxOffset;
+                const max = this.shootAngleMaxOffset;
+                const offset = min + (max - min) * Math.random();
+                const angle = Utils.angle2radian(this.node.angle + offset);
+                this.emit('planeFire', this.node.position, angle);
                 this.audioSource.play();
                 this.lastFireTime = now;
             }

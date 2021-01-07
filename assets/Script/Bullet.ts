@@ -5,7 +5,7 @@ const {ccclass} = cc._decorator;
 @ccclass
 export default class Bullet extends MyComponent {
     private graphics: cc.Graphics = null;
-    private velocity: number = 500;
+    private velocity: number = 900;
 
     public setOrientation(angle: number) {
         const rigidBody = this.getComponent(cc.RigidBody);
