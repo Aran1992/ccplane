@@ -235,6 +235,7 @@
     "_volume": 1,
     "_mute": false,
     "_loop": true,
+    "_firstlyEnabled": true,
     "playOnLoad": true,
     "preload": true,
     "_id": "985IOMHStK1Jqi1hyY/OhG"
@@ -253,6 +254,7 @@
     "_volume": 1,
     "_mute": false,
     "_loop": true,
+    "_firstlyEnabled": true,
     "playOnLoad": true,
     "preload": true,
     "_id": "99efJafCRF2JE656fQLjX6"
@@ -271,6 +273,7 @@
     "_volume": 1,
     "_mute": false,
     "_loop": true,
+    "_firstlyEnabled": true,
     "playOnLoad": true,
     "preload": true,
     "_id": "d0X314KWRBsYyiOcCEogiP"
@@ -317,7 +320,7 @@
       "array": [
         0,
         0,
-        535.1962924902399,
+        562.0504870561007,
         0,
         0,
         0,
@@ -447,10 +450,10 @@
         0,
         0,
         0,
-        0.7071067811865475,
-        0.7071067811865476,
+        0,
+        1,
         0.5,
-        0.5,
+        0.25,
         0.5
       ]
     },
@@ -458,7 +461,7 @@
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0,
-      "z": 90
+      "z": 0
     },
     "_skewX": 0,
     "_skewY": 0,
@@ -577,6 +580,7 @@
     "_volume": 1,
     "_mute": false,
     "_loop": false,
+    "_firstlyEnabled": true,
     "playOnLoad": false,
     "preload": true,
     "_id": "aaYQfD/i9Gqa2MAgnmYABS"
